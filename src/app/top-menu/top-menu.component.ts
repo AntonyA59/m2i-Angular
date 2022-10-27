@@ -9,10 +9,4 @@ export class TopMenuComponent implements OnInit {
   constructor() {}
   username: string = 'Test';
   ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    document.getElementById('btn')?.addEventListener('click', () => {
-      this.username = 'Antony';
-    });
-  }
 }

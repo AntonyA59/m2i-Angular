@@ -1,1 +1,14 @@
-<p>apis works!</p>
+<h1>Apis</h1>
+<div class="article text-center" *ngFor="let api of apis.entries">
+    <h2 class="mt-0">API: {{api.API}}</h2>
+    <p>Description: {{api.Description}}</p>
+    <p *ngIf="api.Auth; else elseBlock">Auth: {{api.Auth}} </p>
+    <ng-template #elseBlock></ng-template>
+    <p *ngIf="api.HTTPS; else elseHTTPS">HTTPS: <i class="fa-solid fa-circle-check green"></i></p>
+    <ng-template #elseHTTPS>
+        HTTPS: <i class="fa-solid fa-circle-xmark red"></i>
+    </ng-template>
+    <p>CORS: {{api.Cors}}</p>
+    <p>LINK: {{api.Link}}</p>
+    <p>Category{{api.Category}}</p>
+</div>
