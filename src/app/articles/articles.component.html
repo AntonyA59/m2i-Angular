@@ -1,6 +1,7 @@
+<h1>Articles</h1>
 <div class="article" *ngFor="let article of articles">
     <h2>{{article.title}} <span class="time">({{article.time}})</span></h2>
+    <p class="author">{{article.author}} </p>
     <p>{{article.content}}</p>
-    <p>{{article.author}} </p>
-    <p>{{article.fullname}}</p>
+    <p class="fs-cursive">{{article.fullname}}</p>
 </div>

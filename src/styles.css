@@ -17,3 +17,20 @@ body {
     margin: 0;
     color: var(--text-color)
 }
+
+main {
+    margin: 2rem
+}
+
+.article {
+    background-color: var(--color3);
+    margin: 2rem;
+    padding: 1rem;
+    border: var(--border);
+    border-radius: 10px;
+}
+
+.fs-cursive {
+    font-family: cursive;
+    font-style: italic;
+}
