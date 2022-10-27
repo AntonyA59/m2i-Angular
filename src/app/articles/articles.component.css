@@ -1,0 +1,11 @@
+.article {
+    background-color: var(--color3);
+    margin: 2rem;
+    padding: 1rem;
+    border: var(--border);
+    border-radius: 10px;
+}
+
+.time {
+    font-size: 0.8rem;
+}

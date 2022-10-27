@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --color1: #f5efe6;
+    --color1-alpha-80: #f5efe6cc;
+    --color2: #D5CABC;
+    --color3: #E8D5CC;
+    --color4: #BDA18A;
+    --color5: #C49D83;
+    --border: #a15f33 4px groove;
+    --text-color: #2a1b12;
+}
+
+body {
+    background-color: var(--color1);
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    color: var(--text-color)
+}
