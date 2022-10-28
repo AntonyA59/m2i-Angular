@@ -6,12 +6,14 @@ import { ArticlesComponent } from './articles/articles.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { APIsComponent } from './apis/apis.component';
 import { ContactComponent } from './contact/contact.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 const routes: Routes = [
   { path: '', component: HelloWorldComponent },
   { path: 'articles', component: ArticlesComponent },
   { path: 'apis', component: APIsComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'messagerie', component: MessagerieComponent },
 ];
 @NgModule({
   declarations: [],

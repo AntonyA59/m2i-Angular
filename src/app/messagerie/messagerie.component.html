@@ -1,0 +1,14 @@
+<h1>Messagerie</h1>
+<form [formGroup]="messagerie" (ngSubmit)="onSubmit()">
+    <label for="pseudo">Pseudo:</label>
+    <input formControlName="pseudo" type="text" name="pseudo">
+    <label for="message">Message:</label>
+    <input formControlName="message" type="text" name="message">
+    <button type="submit">Envoyer</button>
+</form>
+
+<div class="article" *ngFor="let message of messages">
+    <h2>{{message.pseudo}}</h2>
+    <p>{{message.message}}</p>
+    <p>{{message.date}}</p>
+</div>
