@@ -1,5 +1,13 @@
 <h1>Apis</h1>
-<div class="article text-center" *ngFor="let api of apis.entries">
+
+<select name="category" id="category">
+    <option class="opt-category">Choisir une catégorie</option>
+    <option class="opt-category" (click)="getAll()">Tout</option>
+    <option *ngFor="let categorie of apisCategories" (click)="getEntriesPerCategory(categorie.category)">
+        {{categorie.category}}</option>
+</select>
+
+<div class="article text-center" *ngFor="let api of apis">
     <h2 class="mt-0">API: {{api.API}}</h2>
     <p>Description: {{api.Description}}</p>
     <p *ngIf="api.Auth; else elseBlock">Auth: {{api.Auth}} </p>
