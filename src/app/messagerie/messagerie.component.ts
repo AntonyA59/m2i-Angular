@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { mergeMap, timer } from 'rxjs';
+import { mergeMap, Subscription, timer } from 'rxjs';
 import { Message } from '../interface/message';
 import { MessagerieService } from '../services/messagerie.service';
 
@@ -10,6 +10,7 @@ import { MessagerieService } from '../services/messagerie.service';
   styleUrls: ['./messagerie.component.css'],
 })
 export class MessagerieComponent implements OnInit {
+  sub: Subscription = new Subscription();
   submitted = false;
   messagerie = new FormGroup({
     pseudo: new FormControl('', [Validators.minLength(3), Validators.required]),
@@ -34,7 +35,7 @@ export class MessagerieComponent implements OnInit {
     this.messagerie.controls['message'].reset();
   }
   init() {
-    this.myTimer
+    this.sub = this.myTimer
       .pipe(mergeMap(() => this.messagerieService.getMessage()))
       .subscribe((message) => (this.messages = message));
   }
@@ -42,5 +43,8 @@ export class MessagerieComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

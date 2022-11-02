@@ -21,7 +21,7 @@
     <div *ngIf="submitted  && f.message.errors?.['required']">
         <p>Le message ne doit pas être vide</p>
     </div>
-    <button type="submit">Envoyer</button>
+    <button [disabled]="!messagerie.valid" type="submit">Envoyer</button>
 </form>
 
 <div class="article" *ngFor="let message of messages">
