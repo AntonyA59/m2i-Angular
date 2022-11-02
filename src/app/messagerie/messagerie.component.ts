@@ -20,7 +20,7 @@ export class MessagerieComponent implements OnInit {
     ]),
   });
   messages: Message[] = [];
-  myTimer = timer(5000, 5000);
+  myTimer = timer(0, 5000);
 
   get f() {
     return this.messagerie.controls;

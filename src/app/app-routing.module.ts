@@ -14,6 +14,13 @@ const routes: Routes = [
   { path: 'apis', component: APIsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'messagerie', component: MessagerieComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./authentication/authentication.module').then(
+        (m) => m.AuthenticationModule
+      ),
+  },
 ];
 @NgModule({
   declarations: [],
