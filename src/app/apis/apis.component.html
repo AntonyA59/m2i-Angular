@@ -16,7 +16,12 @@
     <ng-template #elseHTTPS>
         HTTPS: <i class="fa-solid fa-circle-xmark red"></i>
     </ng-template>
-    <p>CORS: {{api.Cors}}</p>
-    <p>LINK: {{api.Link}}</p>
-    <p>Category{{api.Category}}</p>
+
+    <p>CORS:
+        <i *ngIf="api.Cors == 'unknown'" class="fa-solid fa-circle-question"></i>
+        <i *ngIf="api.Cors == 'yes' " class="fa-solid fa-circle-check green"></i>
+        <i *ngIf="api.Cors == 'no' " class="fa-solid fa-circle-xmark red"></i>
+    </p>
+    <p>Category: {{api.Category}}</p>
+    <a class="btn-link" href="{{api.Link}}">Visitez le site web</a>
 </div>
