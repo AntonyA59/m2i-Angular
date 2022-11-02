@@ -7,6 +7,7 @@ import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { APIsComponent } from './apis/apis.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: '', component: HelloWorldComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
       import('./authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
+    component: AuthComponent,
   },
 ];
 @NgModule({

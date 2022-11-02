@@ -21,7 +21,7 @@ export class MessagerieService {
     return this.http.get<Message[]>(this.messageUrl);
   }
   addMessage(message: Message) {
-    this.http.post(this.messageUrl, message).subscribe();
+    this.http.post(this.messageUrl, message, httpOptions).subscribe();
   }
   constructor(private http: HttpClient) {}
 }

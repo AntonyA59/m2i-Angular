@@ -20,7 +20,7 @@ body {
 
 button {
     background-color: var(--color5);
-    width: 5rem;
+    width: 7rem;
     padding: 0.5rem;
     border: var(--border);
     border-radius: 20px;

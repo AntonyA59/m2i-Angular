@@ -4,28 +4,27 @@ import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   submitted = false;
-  loginForm = new FormGroup({
+  registrationForm = new FormGroup({
+    username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
   constructor(private authService: AuthService) {}
-
   get f() {
-    return this.loginForm.controls;
+    return this.registrationForm.controls;
   }
-
   onSubmit() {
-    if (this.loginForm.invalid) {
+    if (this.registrationForm.invalid) {
       return;
     }
     this.submitted = true;
-    this.authService.connectUser(this.loginForm.value as User);
+    this.authService.registerUser(this.registrationForm.value as User);
   }
   ngOnInit(): void {}
 }

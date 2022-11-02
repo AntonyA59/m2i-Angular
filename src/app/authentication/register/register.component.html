@@ -1,5 +1,16 @@
-<h1 class="text-center">Connexion</h1>
-<form class="article mb-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div *ngIf="submitted" class="alert alert-success" role="alert">
+    User ajouté avec succés
+</div>
+
+<h1 class="text-center">Inscription</h1>
+<form class="article mb-3" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+        <input formControlName="username" type="text" class="form-control" id="username">
+        <label for="username">Username</label>
+    </div>
+    <div *ngIf="submitted  && f.username.errors?.['required']">
+        <p class="text-danger">Ce champ est requis</p>
+    </div>
     <div class="form-floating mb-3">
         <input formControlName="email" type="text" class="form-control" id="email">
         <label for="email">Email</label>
@@ -14,5 +25,5 @@
     <div *ngIf="submitted  && f.password.errors?.['required']">
         <p class="text-danger">Ce champ est requis</p>
     </div>
-    <button [disabled]="!loginForm.valid" type="submit">Connexion</button>
+    <button [disabled]="!registrationForm.valid" type="submit">Register</button>
 </form>
