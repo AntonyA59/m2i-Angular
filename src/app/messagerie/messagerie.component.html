@@ -1,14 +1,32 @@
-<h1>Messagerie</h1>
-<form [formGroup]="messagerie" (ngSubmit)="onSubmit()">
-    <label for="pseudo">Pseudo:</label>
-    <input formControlName="pseudo" type="text" name="pseudo">
-    <label for="message">Message:</label>
-    <input formControlName="message" type="text" name="message">
+<h1 class="text-center">Messagerie</h1>
+<form class="article mb-3" [formGroup]="messagerie" (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+        <input formControlName="pseudo" type="text" class="form-control" id="pseudo" placeholder="Pseudo">
+        <label for="pseudo">Pseudo</label>
+    </div>
+    <div *ngIf="submitted  && f.pseudo.errors?.['minlength']">
+        <p>Le pseudo doit être composé au moin de 3 caracteres</p>
+    </div>
+    <div *ngIf="submitted  && f.pseudo.errors?.['required']">
+        <p>Le pseudo ne doit pas être vide</p>
+    </div>
+    <div class="form-floating mb-3">
+        <textarea class="form-control" formControlName="message" placeholder="Leave a message here" id="message"
+            style="height: 100px"></textarea>
+        <label for="message">Message</label>
+    </div>
+    <div *ngIf="submitted  && f.message.errors?.['minlength']">
+        <p>Le message doit être composé au moin de 3 caracteres</p>
+    </div>
+    <div *ngIf="submitted  && f.message.errors?.['required']">
+        <p>Le message ne doit pas être vide</p>
+    </div>
     <button type="submit">Envoyer</button>
 </form>
 
 <div class="article" *ngFor="let message of messages">
     <h2>{{message.pseudo}}</h2>
     <p>{{message.message}}</p>
+
     <p>{{message.date}}</p>
 </div>
