@@ -33,7 +33,6 @@ export class APIsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.apisService.getApisEntries().subscribe;
     this.apisService
       .getApisUrlCategories()
       .subscribe((categoriesFromService) => {
