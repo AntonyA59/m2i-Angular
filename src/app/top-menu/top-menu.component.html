@@ -9,5 +9,6 @@
         <a routerLink="login">Login</a>
         <a routerLink="/login/register">Register</a>
         <a routerLink="/login/logout">Logout</a>
+        <p class="m-0 fw-bold" *ngIf="user.username != ''">{{user.username}}</p>
     </nav>
 </header>

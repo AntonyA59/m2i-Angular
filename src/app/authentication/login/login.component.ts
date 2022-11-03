@@ -5,6 +5,7 @@ import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthComponent } from 'src/app/auth/auth.component';
 import { AlertService } from 'src/app/services/alert.service';
+import { ProfilService } from 'src/app/services/profil.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   statut?: Status;
   constructor(
     private authService: AuthService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private profilService: ProfilService
   ) {}
 
   get f() {
@@ -38,10 +40,12 @@ export class LoginComponent implements OnInit {
       .subscribe((response) => {
         if (this.authService.isUser(response)) {
           this.user = response;
+          this.profilService.envoyerProfil(response);
         }
         if (this.authService.isStatut(response)) {
           this.alertService.envoyerStatus(response);
         }
+        sessionStorage.setItem('connected', 'true');
       });
   }
   init() {
