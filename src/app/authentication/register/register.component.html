@@ -2,27 +2,28 @@
     User ajouté avec succés
 </div>
 
+
 <h1 class="text-center">Inscription</h1>
 <form class="article mb-3" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="form-floating mb-3">
         <input formControlName="username" type="text" class="form-control" id="username">
         <label for="username">Username</label>
     </div>
-    <div *ngIf="submitted  && f.username.errors?.['required']">
+    <div *ngIf="f.username.errors?.['required']">
         <p class="text-danger">Ce champ est requis</p>
     </div>
     <div class="form-floating mb-3">
         <input formControlName="email" type="text" class="form-control" id="email">
         <label for="email">Email</label>
     </div>
-    <div *ngIf="submitted  && f.email.errors?.['required']">
+    <div *ngIf="f.email.errors?.['required']">
         <p class="text-danger">Ce champ est requis</p>
     </div>
     <div class="form-floating mb-3">
         <input formControlName="password" type="password" class="form-control" id="password">
         <label for="password">Password</label>
     </div>
-    <div *ngIf="submitted  && f.password.errors?.['required']">
+    <div *ngIf="f.password.errors?.['required']">
         <p class="text-danger">Ce champ est requis</p>
     </div>
     <button [disabled]="!registrationForm.valid" type="submit">Register</button>

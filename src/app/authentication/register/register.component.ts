@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Status } from 'src/app/interface/status';
 import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,6 +16,8 @@ export class RegisterComponent implements OnInit {
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
+  user?: User;
+  statut?: Status;
   constructor(private authService: AuthService) {}
   get f() {
     return this.registrationForm.controls;
@@ -23,8 +26,17 @@ export class RegisterComponent implements OnInit {
     if (this.registrationForm.invalid) {
       return;
     }
-    this.submitted = true;
-    this.authService.registerUser(this.registrationForm.value as User);
+    this.authService
+      .registerUser(this.registrationForm.value as User)
+      .subscribe((response) => {
+        if (this.authService.isUser(response)) {
+          this.user = response;
+          this.submitted = true;
+        }
+        if (this.authService.isStatut(response)) {
+          this.statut = response;
+        }
+      });
   }
   ngOnInit(): void {}
 }

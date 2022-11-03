@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],

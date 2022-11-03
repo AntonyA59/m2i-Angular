@@ -1,3 +1,9 @@
+<div *ngIf="user" class="alert alert-warning" role="alert">
+    Vous êtes connecté sous le nom de {{user.username}}
+</div>
+<div *ngIf="statut" class="alert alert-{{statut.type}}" role="alert">
+    {{statut.response}}
+</div>
 <h1 class="text-center">Connexion</h1>
 <form class="article mb-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-floating mb-3">

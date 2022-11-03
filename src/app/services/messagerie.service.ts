@@ -18,10 +18,10 @@ export class MessagerieService {
   messageUrl = 'http://data.snx.ovh/messages.php';
 
   getMessage(): Observable<Message[]> {
-    return this.http.get<Message[]>(this.messageUrl);
+    return this.http.get<Message[]>(this.messageUrl, httpOptions);
   }
-  addMessage(message: Message) {
-    this.http.post(this.messageUrl, message, httpOptions).subscribe();
+  addMessage(message: Partial<Message>): Observable<Message> {
+    return this.http.post<Message>(this.messageUrl, message, httpOptions);
   }
   constructor(private http: HttpClient) {}
 }

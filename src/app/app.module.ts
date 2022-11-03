@@ -12,6 +12,7 @@ import { APIsComponent } from './apis/apis.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { AuthComponent } from './auth/auth.component';
+import { AlertComponent } from './authentication/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthComponent } from './auth/auth.component';
     ContactComponent,
     MessagerieComponent,
     AuthComponent,
+    AlertComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule, ReactiveFormsModule],
   providers: [],
