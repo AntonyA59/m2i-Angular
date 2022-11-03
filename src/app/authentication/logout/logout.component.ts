@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Status } from 'src/app/interface/status';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,10 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LogoutComponent implements OnInit {
   statut?: Status;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private alertService: AlertService
+  ) {}
   logout() {
     this.authService.logout().subscribe((response) => {
-      this.statut = response;
+      this.alertService.envoyerStatus(response);
     });
   }
   ngOnInit(): void {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Status } from 'src/app/interface/status';
 import { User } from 'src/app/interface/user';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,7 +19,10 @@ export class RegisterComponent implements OnInit {
   });
   user?: User;
   statut?: Status;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private alertService: AlertService
+  ) {}
   get f() {
     return this.registrationForm.controls;
   }
@@ -34,7 +38,7 @@ export class RegisterComponent implements OnInit {
           this.submitted = true;
         }
         if (this.authService.isStatut(response)) {
-          this.statut = response;
+          this.alertService.envoyerStatus(response);
         }
       });
   }

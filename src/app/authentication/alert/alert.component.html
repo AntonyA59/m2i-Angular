@@ -1,3 +1,4 @@
-<div *ngIf="notification" class="alert alert-{{notification.type}" role="alert">
-    {{notification.response}}
+<div *ngIf="status.response != ''" class="alert alert-{{status.type}} alert-dismissible show" role="alert">
+    {{status.response}}
+    <button type="button" class="btn-close" (click)="closeAlert()"></button>
 </div>

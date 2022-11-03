@@ -4,6 +4,7 @@ import { Status } from 'src/app/interface/status';
 import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthComponent } from 'src/app/auth/auth.component';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,10 @@ export class LoginComponent implements OnInit {
   });
   user?: User;
   statut?: Status;
-  constructor(private authService: AuthService, private auth: AuthComponent) {}
+  constructor(
+    private authService: AuthService,
+    private alertService: AlertService
+  ) {}
 
   get f() {
     return this.loginForm.controls;
@@ -36,7 +40,7 @@ export class LoginComponent implements OnInit {
           this.user = response;
         }
         if (this.authService.isStatut(response)) {
-          this.auth.notif = response;
+          this.alertService.envoyerStatus(response);
         }
       });
   }
