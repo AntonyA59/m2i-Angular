@@ -1,5 +1,7 @@
-<div *ngIf="user" class="alert alert-warning" role="alert">
-    Vous êtes connecté sous le nom de {{user.username}}
+<div *ngIf="user">
+    <div *ngIf="user.username" class="alert alert-warning" role="alert">
+        Vous êtes connecté sous le nom de {{user.username}}
+    </div>
 </div>
 <div *ngIf="statut" class="alert alert-{{statut.type}}" role="alert">
     {{statut.response}}

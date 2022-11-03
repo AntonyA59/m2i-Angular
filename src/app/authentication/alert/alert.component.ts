@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Status } from 'src/app/interface/status';
 
 @Component({
@@ -8,6 +8,7 @@ import { Status } from 'src/app/interface/status';
 })
 export class AlertComponent implements OnInit {
   @Input() notification: Status = {} as Status;
+  @Output() closeEvent = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}

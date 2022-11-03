@@ -16,6 +16,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   urlLogin = 'https://data.snx.ovh/login.php';
   urlRegister = 'https://data.snx.ovh/register.php';
+  urlLogout = 'https://data.snx.ovh/logout.php';
 
   getUser(): Observable<User> {
     return this.http.get<User>(this.urlLogin, {
@@ -31,6 +32,10 @@ export class AuthService {
 
   registerUser(user: Partial<User | Status>): Observable<User | Status> {
     return this.http.post<User | Status>(this.urlRegister, user);
+  }
+
+  logout(): Observable<Status> {
+    return this.http.get<Status>(this.urlLogout, { withCredentials: true });
   }
 
   isUser(obj: any): obj is User {

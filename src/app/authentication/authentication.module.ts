@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { RegisterComponent } from './register/register.component';
-import { AlertComponent } from './alert/alert.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, LogoutComponent],
   imports: [CommonModule, AuthenticationRoutingModule, ReactiveFormsModule],
   bootstrap: [LoginComponent],
 })
