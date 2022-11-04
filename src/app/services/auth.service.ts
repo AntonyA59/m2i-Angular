@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interface/user';
 import { Status } from '../interface/status';
+import { AuthStatus } from '../interface/authStatus';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,10 +14,16 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  private curUser = new BehaviorSubject<AuthStatus>({
+    connected: false,
+  });
+
+  curUserObs$ = this.curUser.asObservable();
+
   urlLogin = 'https://data.snx.ovh/login.php';
   urlRegister = 'https://data.snx.ovh/register.php';
   urlLogout = 'https://data.snx.ovh/logout.php';
+  constructor(private http: HttpClient) {}
 
   getUser(): Observable<User> {
     return this.http.get<User>(this.urlLogin, {
@@ -50,5 +57,13 @@ export class AuthService {
 
   isStatut(obj: any): obj is Status {
     return 'response' in obj && 'type' in obj;
+  }
+
+  saveCurrentUser(curUser: AuthStatus) {
+    this.curUser.next(curUser);
+  }
+
+  isConnected() {
+    return this.curUser.value.connected;
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { User } from '../interface/user';
-import { ProfilService } from '../services/profil.service';
+import { AuthStatus } from '../interface/authStatus';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -10,13 +10,26 @@ import { ProfilService } from '../services/profil.service';
 })
 export class TopMenuComponent implements OnInit {
   sub: Subscription = new Subscription();
-  user!: User;
-  constructor(private profilService: ProfilService) {}
+  user!: AuthStatus;
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.sub = this.profilService.profilObs$.subscribe((response) => {
+    this.sub = this.authService.curUserObs$.subscribe((response) => {
       this.user = response;
     });
+
+    if (sessionStorage.getItem('connected') === 'true') {
+      this.authService.getUser().subscribe((response) => {
+        if (this.authService.isUser(response)) {
+          this.authService.saveCurrentUser({
+            connected: true,
+            user: response,
+          });
+        } else {
+          sessionStorage.setItem('connected', 'false');
+        }
+      });
+    }
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
